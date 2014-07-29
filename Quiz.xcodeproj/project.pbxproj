@@ -24,6 +24,8 @@
 		0F1A404B1987329900D48A37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1A402A1987329900D48A37 /* CoreData.framework */; };
 		0F1A40531987329900D48A37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F1A40511987329900D48A37 /* InfoPlist.strings */; };
 		0F1A40561987329900D48A37 /* QuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A40551987329900D48A37 /* QuizTests.m */; };
+		0F1A40621987348C00D48A37 /* BNRQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A40601987348C00D48A37 /* BNRQuizViewController.m */; };
+		0F1A40631987348C00D48A37 /* BNRQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		0F1A40521987329900D48A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F1A40541987329900D48A37 /* QuizTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizTests.h; sourceTree = "<group>"; };
 		0F1A40551987329900D48A37 /* QuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizTests.m; sourceTree = "<group>"; };
+		0F1A405F1987348C00D48A37 /* BNRQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRQuizViewController.h; sourceTree = "<group>"; };
+		0F1A40601987348C00D48A37 /* BNRQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRQuizViewController.m; sourceTree = "<group>"; };
+		0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRQuizViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +127,9 @@
 			children = (
 				0F1A40351987329900D48A37 /* BNRAppDelegate.h */,
 				0F1A40361987329900D48A37 /* BNRAppDelegate.m */,
+				0F1A405F1987348C00D48A37 /* BNRQuizViewController.h */,
+				0F1A40601987348C00D48A37 /* BNRQuizViewController.m */,
+				0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */,
 				0F1A403E1987329900D48A37 /* Quiz.xcdatamodeld */,
 				0F1A402D1987329900D48A37 /* Supporting Files */,
 			);
@@ -237,6 +245,7 @@
 				0F1A40391987329900D48A37 /* Default.png in Resources */,
 				0F1A403B1987329900D48A37 /* Default@2x.png in Resources */,
 				0F1A403D1987329900D48A37 /* Default-568h@2x.png in Resources */,
+				0F1A40631987348C00D48A37 /* BNRQuizViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +283,7 @@
 				0F1A40331987329900D48A37 /* main.m in Sources */,
 				0F1A40371987329900D48A37 /* BNRAppDelegate.m in Sources */,
 				0F1A40401987329900D48A37 /* Quiz.xcdatamodeld in Sources */,
+				0F1A40621987348C00D48A37 /* BNRQuizViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
