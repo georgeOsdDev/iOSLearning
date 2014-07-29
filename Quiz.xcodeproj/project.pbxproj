@@ -26,6 +26,7 @@
 		0F1A40561987329900D48A37 /* QuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A40551987329900D48A37 /* QuizTests.m */; };
 		0F1A40621987348C00D48A37 /* BNRQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A40601987348C00D48A37 /* BNRQuizViewController.m */; };
 		0F1A40631987348C00D48A37 /* BNRQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */; };
+		0F33A853198743B700915385 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F33A852198743B700915385 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		0F1A405F1987348C00D48A37 /* BNRQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRQuizViewController.h; sourceTree = "<group>"; };
 		0F1A40601987348C00D48A37 /* BNRQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRQuizViewController.m; sourceTree = "<group>"; };
 		0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRQuizViewController.xib; sourceTree = "<group>"; };
+		0F33A852198743B700915385 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				0F1A40601987348C00D48A37 /* BNRQuizViewController.m */,
 				0F1A40611987348C00D48A37 /* BNRQuizViewController.xib */,
 				0F1A403E1987329900D48A37 /* Quiz.xcdatamodeld */,
+				0F33A852198743B700915385 /* Images.xcassets */,
 				0F1A402D1987329900D48A37 /* Supporting Files */,
 			);
 			path = Quiz;
@@ -217,6 +220,11 @@
 				CLASSPREFIX = BNR;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Oshida Takeharu";
+				TargetAttributes = {
+					0F1A40201987329900D48A37 = {
+						DevelopmentTeam = 3924T4MZCL;
+					};
+				};
 			};
 			buildConfigurationList = 0F1A401C1987329900D48A37 /* Build configuration list for PBXProject "Quiz" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -244,6 +252,7 @@
 				0F1A40311987329900D48A37 /* InfoPlist.strings in Resources */,
 				0F1A40391987329900D48A37 /* Default.png in Resources */,
 				0F1A403B1987329900D48A37 /* Default@2x.png in Resources */,
+				0F33A853198743B700915385 /* Images.xcassets in Resources */,
 				0F1A403D1987329900D48A37 /* Default-568h@2x.png in Resources */,
 				0F1A40631987348C00D48A37 /* BNRQuizViewController.xib in Resources */,
 			);
@@ -384,10 +393,16 @@
 		0F1A405A1987329A00D48A37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
 				INFOPLIST_FILE = "Quiz/Quiz-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -395,10 +410,16 @@
 		0F1A405B1987329A00D48A37 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
 				INFOPLIST_FILE = "Quiz/Quiz-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -456,6 +477,7 @@
 				0F1A405B1987329A00D48A37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F1A405C1987329A00D48A37 /* Build configuration list for PBXNativeTarget "QuizTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +486,7 @@
 				0F1A405E1987329A00D48A37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
