@@ -7,6 +7,8 @@
 //
 
 #import "BNRItemsViewController.h"
+
+#import "BNRDetailViewController.h"
 #import "BNRItemStore.h"
 #import "BNRItem.h"
 
@@ -26,7 +28,23 @@
 //        for(int i = 0; i < 5; i++) {
 //            [[BNRItemStore sharedStore] createItem];
 //        }
+        
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        // Create a new bar button item that will send
+        // addNewItem: to BNRItemViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+            initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                target:self
+                                action:@selector(addNewItem:)];
+        
+        // Set this bar button item  as the right item in the navigationItem
+        navItem.rightBarButtonItem = bbi;
+        
+        navItem.leftBarButtonItem = self.editButtonItem;
     }
+    
     return self;
 }
 
@@ -75,8 +93,8 @@
     [self.tableView registerClass:[UITableViewCell class]
             forCellReuseIdentifier:@"UITableViewCell"];
      
-    UIView *header = self.headerView;
-    [self.tableView setTableHeaderView:header];
+//    UIView *header = self.headerView;
+//    [self.tableView setTableHeaderView:header];
 
 }
 
@@ -97,38 +115,38 @@
                           withRowAnimation:UITableViewRowAnimationTop];
 }
 
-- (IBAction)toggleEditingMode:(id)sender
-{
-    if(self.isEditing) {
-        
-        //Change text of button to inform user of state
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        
-        // Turn off editing mode
-        [self setEditing:NO animated:YES];
-    } else {
-        
-        //Change text of button to inform user of state
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        
-        // Turn off editing mode
-        [self setEditing:YES animated:YES];
-        
-    }
-}
-
-- (UIView *) headerView
-{
-    // If you have not loaded the headerView yet...
-    if (!_headerView) {
-        
-        // Load HeaderView.xib
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView"
-                                      owner:self
-                                    options:nil];
-    }
-    return _headerView;
-}
+//- (IBAction)toggleEditingMode:(id)sender
+//{
+//    if(self.isEditing) {
+//        
+//        //Change text of button to inform user of state
+//        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+//        
+//        // Turn off editing mode
+//        [self setEditing:NO animated:YES];
+//    } else {
+//        
+//        //Change text of button to inform user of state
+//        [sender setTitle:@"Done" forState:UIControlStateNormal];
+//        
+//        // Turn off editing mode
+//        [self setEditing:YES animated:YES];
+//        
+//    }
+//}
+//
+//- (UIView *) headerView
+//{
+//    // If you have not loaded the headerView yet...
+//    if (!_headerView) {
+//        
+//        // Load HeaderView.xib
+//        [[NSBundle mainBundle] loadNibNamed:@"HeaderView"
+//                                      owner:self
+//                                    options:nil];
+//    }
+//    return _headerView;
+//}
 
 - (void) tableView:(UITableView *)tableView
  commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
@@ -151,6 +169,29 @@
             toIndexPath:(NSIndexPath *)destinationIndexPath{
     
     [[BNRItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BNRDetailViewController *detailView = [[BNRDetailViewController alloc] init];
+    
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *selectedItem = items[indexPath.row];
+    
+    // Give detail view controller a pointer to the item object in row
+    detailView.item = selectedItem;
+    
+    //Push it on the top of navigation controller's stack
+    [self.navigationController pushViewController:detailView
+                                         animated:YES];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 @end
