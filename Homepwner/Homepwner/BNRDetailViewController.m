@@ -7,18 +7,57 @@
 //
 
 #import "BNRDetailViewController.h"
-
 #import "BNRItem.h"
+#import "BNRImageStore.h"
 
 @interface BNRDetailViewController ()
+    <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @end
 
 @implementation BNRDetailViewController
+
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)takePicture:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    
+    // Place image picker on the screen
+    [self presentViewController:imagePicker animated:YES completion:NULL];
+    
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker
+ didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+    
+    self.imageView.image = image;
+    
+    // Take imagePicker off the screen
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -37,6 +76,12 @@
         dateFormatter.timeStyle = NSDateFormatterNoStyle;
     }
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    
+    NSString *key = self.item.itemKey;
+    
+    UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:key];
+    
+    self.imageView.image = imageToDisplay;
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -57,6 +102,12 @@
 {
     _item = item;
     self.navigationItem.title = _item.itemName;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
