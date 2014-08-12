@@ -26,6 +26,12 @@
 
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
+    
+//    for (UIView *subView in self.view.subviews){
+//        if ([subView hasAmbiguousLayout]) {
+//            [subView exerciseAmbiguityInLayout];
+//        }
+//    }
 }
 
 - (IBAction)takePicture:(id)sender {
@@ -109,5 +115,14 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+//- (void)viewDidLayoutSubviews
+//{
+//    for (UIView *subView in self.view.subviews){
+//        if ([subView hasAmbiguousLayout]) {
+//            NSLog(@"Ambigous: %@", subView);
+//        }
+//    }
+//}
 
 @end
